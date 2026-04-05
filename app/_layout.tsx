@@ -4,6 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/use-color-scheme';
+import useRevenueCatService from '@/hooks/use-revenue-cat';
 
 export const unstable_settings = {
   anchor: '(tabs)',
@@ -11,6 +12,11 @@ export const unstable_settings = {
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
+  const { currentOffering, customerInfo, isMemberPro } = useRevenueCatService();
+
+  console.log('Current Offering:', currentOffering);
+  console.log('Customer Info:', customerInfo);
+  console.log('Is Pro Member:', isMemberPro);
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
